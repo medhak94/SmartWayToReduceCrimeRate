@@ -2,8 +2,8 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    var enrollist = (List<QuickType911Enrollment.Smart911Enrollment>)ViewData["Enrollist"];
-    QuickType911Enrollment.Smart911Enrollment[] smart911Enrollments = (QuickType911Enrollment.Smart911Enrollment[])ViewData["Smart911Enrollments"];
+    var enrollist = (List<Smart911Enrollments.Smart911Enrollment>)ViewData["Enrollist"];
+    Smart911Enrollments.Smart911Enrollment[] smart911Enrollments = (Smart911Enrollments.Smart911Enrollment[])ViewData["Smart911Enrollments"];
 }
 
 <div class="text-center">
@@ -23,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (QuickType911Enrollment.Smart911Enrollment enroll in enrollist)
+        @foreach (Smart911Enrollments.Smart911Enrollment enroll in enrollist)
         {
             <tr>
                 <td>@enroll.ZipCode</td>

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using QuickType;
-using QuickType911Enrollment;
+using CrimeIncident;
+using Smart911Enrollments;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
 
 namespace SmartEnrollmentFor911.Pages
 {
@@ -20,22 +22,30 @@ namespace SmartEnrollmentFor911.Pages
             _logger = logger;
         }
 
+
+
         public void OnGet()
         {
             using (var webClient = new WebClient())
+
             {
-                String crimeIncidentJSON = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/k59e-2pvf.json");
+                string crimeIncidentJSONEndpoint = "https://data.cincinnati-oh.gov/resource/k59e-2pvf.json";
+                string smart911EnrollmentJSONEndpoint = "https://data.cincinnati-oh.gov/resource/rtu7-isj6.json";
+                string crimeIncidentJSON = GetDataFromEndpoint(crimeIncidentJSONEndpoint);
+                string smart911EnrollmentJSON = GetDataFromEndpoint(smart911EnrollmentJSONEndpoint);
+
+                
                 var crimeIncidents = CrimeIncidents.FromJson(crimeIncidentJSON);
                 ViewData["CrimeIncidents"] = crimeIncidents;
 
 
-                String smart911EnrollmentJSON = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/rtu7-isj6.json");
-                var smart911Enrollments = Smart911Enrollment.FromJson(smart911EnrollmentJSON);
+                 var smart911Enrollments = Smart911Enrollment.FromJson(smart911EnrollmentJSON);
                 ViewData["Smart911Enrollments"] = smart911Enrollments;
 
-                IDictionary<long, QuickType.CrimeIncidents> incidentsMap = new Dictionary<long, CrimeIncidents>();
-                List<QuickType911Enrollment.Smart911Enrollment> enrollist = new List<Smart911Enrollment>();
-                foreach (QuickType.CrimeIncidents crInc in crimeIncidents)
+                IDictionary<long, CrimeIncident.CrimeIncidents> incidentsMap = new Dictionary<long, CrimeIncidents>();
+                List<Smart911Enrollments.Smart911Enrollment> enrollist = new List<Smart911Enrollment>();
+                
+                foreach (CrimeIncidents crInc in crimeIncidents)
                 {
                     if (!incidentsMap.ContainsKey(crInc.Zip))
                     {
@@ -43,7 +53,7 @@ namespace SmartEnrollmentFor911.Pages
                     }
                 }
 
-                foreach (QuickType911Enrollment.Smart911Enrollment enroll in smart911Enrollments)
+                foreach (Smart911Enrollment enroll in smart911Enrollments)
                 {
                     if (incidentsMap.ContainsKey(enroll.ZipCode))
                     {
@@ -51,7 +61,21 @@ namespace SmartEnrollmentFor911.Pages
                     }
                 }
                 ViewData["Enrollist"] = enrollist;
+
+                
             }
         }
+
+
+        public string GetDataFromEndpoint(string jsonEndpoint)
+        {
+            string jSonData = "";
+            using (WebClient webClient = new WebClient())
+            {
+                jSonData = webClient.DownloadString(jsonEndpoint);
+            }
+            return jSonData;
+        }
+
     }
 }
