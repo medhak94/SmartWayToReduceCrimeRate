@@ -13,24 +13,21 @@ namespace SmartEnrollmentFor911.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        //private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        //public IndexModel(ILogger<IndexModel> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         public void OnGet()
         {
             using (var webClient = new WebClient())
             {
-                String crimeIncidentJSON = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/k59e-2pvf.json");
-                var crimeIncidents = CrimeIncidents.FromJson(crimeIncidentJSON);
+                var crimeIncidents = CrimeIncidents.FromJson(GetJsonData("https://data.cincinnati-oh.gov/resource/k59e-2pvf.json"));
                 ViewData["CrimeIncidents"] = crimeIncidents;
 
-
-                String smart911EnrollmentJSON = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/rtu7-isj6.json");
-                var smart911Enrollments = Smart911Enrollment.FromJson(smart911EnrollmentJSON);
+                var smart911Enrollments = Smart911Enrollment.FromJson(GetJsonData("https://data.cincinnati-oh.gov/resource/rtu7-isj6.json"));
                 ViewData["Smart911Enrollments"] = smart911Enrollments;
 
                 IDictionary<long, QuickType.CrimeIncidents> incidentsMap = new Dictionary<long, CrimeIncidents>();
@@ -51,6 +48,14 @@ namespace SmartEnrollmentFor911.Pages
                     }
                 }
                 ViewData["Enrollist"] = enrollist;
+            }
+        }
+        public string GetJsonData(string JsonUrl)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                string jsonString = webClient.DownloadString(JsonUrl);
+                return jsonString;
             }
         }
     }

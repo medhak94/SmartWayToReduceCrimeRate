@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\medha\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\SmartEnrollmentFor911.csproj": {}
+    "C:\\Users\\prash\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\SmartEnrollmentFor911.csproj": {}
   },
   "projects": {
-    "C:\\Users\\medha\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\SmartEnrollmentFor911.csproj": {
+    "C:\\Users\\prash\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\SmartEnrollmentFor911.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\medha\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\SmartEnrollmentFor911.csproj",
+        "projectUniqueName": "C:\\Users\\prash\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\SmartEnrollmentFor911.csproj",
         "projectName": "SmartEnrollmentFor911",
-        "projectPath": "C:\\Users\\medha\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\SmartEnrollmentFor911.csproj",
-        "packagesPath": "C:\\Users\\medha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\medha\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\obj\\",
+        "projectPath": "C:\\Users\\prash\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\SmartEnrollmentFor911.csproj",
+        "packagesPath": "C:\\Users\\prash\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\prash\\source\\repos\\SmartWayToReduceCrimeRate\\SmartEnrollmentFor911\\SmartEnrollmentFor911\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\medha\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\prash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
@@ -79,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
